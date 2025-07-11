@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "publisher": "RebelliousPebble",
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.102.0"
   },
   "categories": [
     "Formatters"
@@ -60,6 +60,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
+    "@types/mocha": "^10.0.10",
     "@types/node": "^24.0.13",
     "@types/vscode": "^1.102.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
@@ -67,6 +68,7 @@
     "@vscode/test-cli": "^0.0.11",
     "@vscode/test-electron": "^2.5.2",
     "eslint": "^8.57.1",
+    "mocha": "^11.7.1",
     "ts-loader": "^9.5.2",
     "typescript": "^5.8.3",
     "webpack": "^5.100.0",

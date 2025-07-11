@@ -114,6 +114,11 @@ export class BitBakeFormatter implements vscode.DocumentFormattingEditProvider, 
             return '    '.repeat(indentLevel) + trimmedLine;
         }
         
+        // Handle function definitions
+        if (this.isFunctionStart(trimmedLine)) {
+            return '    '.repeat(indentLevel) + this.formatFunctionStart(trimmedLine);
+        }
+        
         // Handle variable assignments
         if (this.isVariableAssignment(trimmedLine)) {
             return '    '.repeat(indentLevel) + this.formatVariableAssignment(trimmedLine);
@@ -166,5 +171,14 @@ export class BitBakeFormatter implements vscode.DocumentFormattingEditProvider, 
         // Format task statements
         const parts = line.split(/\s+/);
         return parts.join(' ');
+    }
+
+    private formatFunctionStart(line: string): string {
+        // Format function definitions to ensure proper spacing
+        const match = line.match(/^(.*?)\s*\(\s*\)\s*\{/);
+        if (match) {
+            return `${match[1]}() {`;
+        }
+        return line;
     }
 }
