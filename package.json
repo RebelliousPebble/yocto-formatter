@@ -1,0 +1,83 @@
+{
+  "name": "yocto-formatter",
+  "displayName": "Yocto BitBake Formatter",
+  "description": "VSCode extension for formatting .bb and .bbappend files used in Yocto project",
+  "version": "1.0.0",
+  "publisher": "RebelliousPebble",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "keywords": [
+    "yocto",
+    "bitbake",
+    "bb",
+    "bbappend",
+    "formatter"
+  ],
+  "activationEvents": [
+    "onLanguage:bitbake"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "bitbake",
+        "aliases": [
+          "BitBake",
+          "bitbake"
+        ],
+        "extensions": [
+          ".bb",
+          ".bbappend",
+          ".inc"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "bitbake",
+        "scopeName": "source.bitbake",
+        "path": "./syntaxes/bitbake.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "yocto-formatter.formatDocument",
+        "title": "Format BitBake Document"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.0.13",
+    "@types/vscode": "^1.102.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^8.57.1",
+    "mocha": "^11.7.1",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.100.0",
+    "webpack-cli": "^6.0.1"
+  },
+  "license": "MIT",
+  "author": "Glenn Keates",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RebelliousPebble/yocto-formatter"
+  }
+}
